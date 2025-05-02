@@ -5,7 +5,7 @@ public abstract class CuentaBancaria
     //Aqui van las propiedades que reemplazan getters y setters
     public string Numero { get; } //solo lectura
     public decimal Saldo { get; protected set; } //protected para que solo la clase y sus herederas puedan modificarlo
-    public Estado Estado { get; protected set; }
+    public Estado Estado { get;  set; }
     public string[] Titulares { get; }
     public abstract TipoCuenta Tipo { get; } //abstract para que las clases hijas lo implementen
 
