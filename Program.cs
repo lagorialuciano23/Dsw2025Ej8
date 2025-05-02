@@ -58,6 +58,26 @@ namespace Dsw2025Ej8
                 cuentaCorriente2.Estado = Estado.Activa;
                 EjecutarOperacionSegura(() => cuentaCorriente2.Retirar(2400m)); // Retiro exitoso con descubierto
 
+                // Mostrar el saldo final de cada cuenta
+                Console.WriteLine("\n=== Resumen Final de Cuentas ===");
+                var resumenCuentas = cuentas.Select(c => new {
+                    Número = c.Numero,
+                    Tipo = c.Tipo.ToString(),
+                    Saldo = c.Saldo.ToString(""),
+                    Estado = c.Estado.ToString(),
+                    Titulares = string.Join(", ", c.Titulares)
+                }).ToList();
+
+                foreach (var cuenta in resumenCuentas)
+                {
+                    Console.WriteLine($"Número: {cuenta.Número}");
+                    Console.WriteLine($"Tipo: {cuenta.Tipo}");
+                    Console.WriteLine($"Saldo: {cuenta.Saldo}");
+                    Console.WriteLine($"Estado: {cuenta.Estado}");
+                    Console.WriteLine($"Titulares: {cuenta.Titulares}");
+                    Console.WriteLine(new string('-', 30));
+                }
+
             }
             catch (Exception ex) {
                 Console.WriteLine($"Error Inesperado:{ex.Message}");
